@@ -7,7 +7,8 @@ local updateFilter = tiny.rejectAny('isDrawSystem')
 function love.load()
     _G.world = tiny.world(
         require ("systems.renderSystem")(),
-        require ("systems.playerControllerSystem")()
+        require ("systems.playerControllerSystem")(),
+        require ("systems.drawBackgroundSystem")(70, 100, 70, 0)
     )
     local ctor = require("entities.player")
     local player1 = ctor({x=50, y=50})

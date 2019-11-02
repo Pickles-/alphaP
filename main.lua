@@ -1,6 +1,9 @@
 tiny = require "lib.tiny"
 class = require "lib.class"
 
+local drawFilter = tiny.requireAll('isDrawSystem')
+local updateFilter = tiny.rejectAny('isDrawSystem')
+
 function love.load()
     _G.world = tiny.world(
         require ("systems.renderSystem")(),
@@ -12,13 +15,15 @@ function love.load()
 end
 
 function love.update(dt)
-
+   if world then
+        world:update(dt, updateFilter)
+    end
 end
 
 function love.draw()
     local dt = love.timer.getDelta()
     if world then
-        world:update(dt)
+        world:update(dt, drawFilter)
     end
 end
 

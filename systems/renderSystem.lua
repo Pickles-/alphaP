@@ -2,10 +2,10 @@
 local renderSystem = tiny.processingSystem(class "RenderSystem")
 
 renderSystem.isDrawSystem = true
-renderSystem.filter = tiny.requireAll("draw")
+renderSystem.filter = tiny.requireAll("polygon")
 
 function renderSystem:process(e, dt)
-    e.draw()
+    love.graphics.polygon("line", e.polygon)
 end
 
 return renderSystem

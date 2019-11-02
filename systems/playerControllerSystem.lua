@@ -1,7 +1,7 @@
 
 local playerControllerSystem = tiny.processingSystem(class "PlayerControllerSystem")
 
-playerControllerSystem.filter = tiny.requireAll("position", "isPlayer", "movement")
+playerControllerSystem.filter = tiny.requireAll("position", "isPlayer", "movement", "polygon")
 
 function playerControllerSystem:process(e, dt)
     
@@ -19,6 +19,13 @@ function playerControllerSystem:process(e, dt)
     elseif d then
         e.position.y = e.position.y + e.movement.speed
     end
+
+    e.polygon = {
+        e.position.x , e.position.y,
+        e.position.x + 25, e.position.y,
+        e.position.x + 25, e.position.y + 25,
+        e.position.x, e.position.y + 25,
+    }
 end
 
 return playerControllerSystem

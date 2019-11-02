@@ -16,9 +16,12 @@ function Player:init(args)
 
     self.isPlayer = true
 
-    self.draw = function()
-        love.graphics.rectangle("line", self.position.x, self.position.y, 25, 25)
-    end
+    self.polygon = {
+        self.position.x , self.position.y,
+        self.position.x + 25, self.position.y,
+        self.position.x + 25, self.position.y + 25,
+        self.position.x, self.position.y + 25,
+    }
 end
 
 return Player

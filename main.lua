@@ -15,7 +15,7 @@ function love.load()
 end
 
 function love.update(dt)
-   if world then
+    if world then
         world:update(dt, updateFilter)
     end
 end

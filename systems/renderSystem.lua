@@ -1,11 +1,16 @@
+local Polygon = require("base.polygon")
+local json = require("lib.json")
 
 local renderSystem = tiny.processingSystem(class "RenderSystem")
 
 renderSystem.isDrawSystem = true
-renderSystem.filter = tiny.requireAll("polygon")
+renderSystem.filter = tiny.requireAll("draw")
 
 function renderSystem:process(e, dt)
-    love.graphics.polygon("line", e.polygon)
+
+    if e.draw then
+        e:draw(dt)
+    end
 end
 
 return renderSystem

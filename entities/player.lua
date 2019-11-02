@@ -1,4 +1,5 @@
-local vector = require("lib.vector")
+local Point = require("base.point")
+local Polygon = require("base.polygon")
 
 local Player = class("Player")
 
@@ -15,12 +16,18 @@ function Player:init(args)
     }
 
     self.isPlayer = true
+end
 
-    self.polygon = {
-        self.position.x , self.position.y,
+function Player:draw(dt)
+    love.graphics.polygon("line", self:getPoly())
+end
+
+function Player:getPoly()
+    return {
+        self.position.x, self.position.y,
         self.position.x + 25, self.position.y,
         self.position.x + 25, self.position.y + 25,
-        self.position.x, self.position.y + 25,
+        self.position.x, self.position.y + 25
     }
 end
 

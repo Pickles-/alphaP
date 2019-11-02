@@ -1,6 +1,3 @@
-local Point = require("base.point")
-local Polygon = require("base.polygon")
-
 local Player = class("Player")
 
 --init is called in the class library

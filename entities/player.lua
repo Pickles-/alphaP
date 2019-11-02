@@ -1,4 +1,3 @@
-local class = require("lib.class")
 local vector = require("lib.vector")
 
 local Player = class("Player")

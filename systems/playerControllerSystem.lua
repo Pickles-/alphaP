@@ -1,5 +1,3 @@
-local tiny = require("lib.tiny")
-local class = require("lib.class")
 
 local playerControllerSystem = tiny.processingSystem(class "PlayerControllerSystem")
 

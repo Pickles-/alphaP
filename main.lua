@@ -1,4 +1,5 @@
-local tiny = require "lib.tiny"
+tiny = require "lib.tiny"
+class = require "lib.class"
 
 function love.load()
     _G.world = tiny.world(

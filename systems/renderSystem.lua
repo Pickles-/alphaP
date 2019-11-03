@@ -1,5 +1,3 @@
-local Polygon = require("base.polygon")
-local json = require("lib.json")
 
 local renderSystem = tiny.processingSystem(class "RenderSystem")
 

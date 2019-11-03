@@ -1,12 +1,15 @@
 tiny = require "lib.tiny"
 class = require "lib.class"
+camera = require "lib.camera"
 
 local drawFilter = tiny.requireAll('isDrawSystem')
 local updateFilter = tiny.rejectAny('isDrawSystem')
 
 function love.load()
+    local cam = camera:new()
     _G.world = tiny.world(
-        require ("systems.renderSystem")(),
+        require ("systems.renderSystem")(cam),
+        require ("systems.cameraSystem")(cam),
         require ("systems.playerControllerSystem")(),
         require ("systems.drawBackgroundSystem")(70, 100, 70, 0)
     )

@@ -34,6 +34,24 @@ function vector.__mul(lhs, rhs)
     end
 end
 
+function vector.__div(lhs, rhs)
+    local is_rhs_vector = is_vector(rhs)
+    local is_lhs_vector = is_vector(lhs)
+    if type(lhs) == "number" and is_rhs_vector then
+        assert(not(lhs==0), "Cannot divide by 0")
+        return vector.new(rhs.x / lhs, rhs.y / lhs)
+    elseif type(rhs) == "number" and is_lhs_vector then
+        assert(not(rhs==0), "Cannot divide by 0")
+        return vector.new(lhs.x / rhs, lhs.y / rhs)
+    elseif is_rhs_vector and is_lhs_vector then
+        assert(not(rhs.x==0), "Cannot divide by 0 (rhs.x)")
+        assert(not(rhs.y==0), "Cannot divide by 0 (rhs.y)")
+        return vector.new(lhs.x / rhs.x, lhs.y / rhs.y)
+    else
+        error("Type mismatch: vector and/or number expected", 2)
+    end
+end
+
 function vector.__unm(t)
     assert(is_vector(t), "Type mismatch: vector expected.")
     return vector.new(-t.x, -t.y)

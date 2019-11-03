@@ -2,23 +2,18 @@ local Player = class("Player")
 
 --init is called in the class library
 function Player:init(args)
-    
-    self.position = {
-        x = args.x,
-        y = args.y,
-    }
+    self.id = getNextId()
 
-    -- hitbox could be based off of the sprite width/height for a simple rectangle
-    self.hitbox = {
-        h = 25,
-        w = 25,
-    }
+    self.collider = require ("base.rectangle")(args.x, args.y, 25, 25)
 
     self.movement = {
-        speed = 10
+        speed = 5,
+        vx = 0,
+        vy = 0,
     }
 
     self.isPlayer = true
+    self.isMovable = true
 end
 
 -- Player sprite would eventually replace getPoly()
@@ -29,10 +24,10 @@ end
 
 function Player:getPoly()
     return {
-        self.position.x, self.position.y,
-        self.position.x + 25, self.position.y,
-        self.position.x + 25, self.position.y + 25,
-        self.position.x, self.position.y + 25
+        self.collider.x, self.collider.y,
+        self.collider.x + self.collider.w, self.collider.y,
+        self.collider.x + self.collider.w, self.collider.y + self.collider.h,
+        self.collider.x, self.collider.y + self.collider.h
     }
 end
 

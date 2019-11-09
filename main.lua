@@ -7,7 +7,11 @@ require "utils.idGenerator"
 local drawFilter = tiny.requireAll('isDrawSystem')
 local updateFilter = tiny.rejectAny('isDrawSystem')
 
+debug = require "utils.debug"
+
 function love.load()
+    debug:init()
+
     local cam = camera:new()
     _G.world = tiny.world(
         require ("systems.renderSystem")(cam),
@@ -25,11 +29,13 @@ function love.load()
     local block3 = ctor({x=150, y=250})
     world:add(player1)
     world:add(block1)
-    world:add(block2)
-    world:add(block3)
+    --world:add(block2)
+    --world:add(block3)
 end
 
 function love.update(dt)
+    debug:reset()
+
     if world then
         world:update(dt, updateFilter)
     end
@@ -40,6 +46,8 @@ function love.draw()
     if world then
         world:update(dt, drawFilter)
     end
+
+    debug:draw(dt)
 end
 
 function love.keypressed(key)

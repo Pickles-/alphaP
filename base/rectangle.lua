@@ -41,7 +41,7 @@ function Rectangle:minkowskiDiff(other)
     local topLeft = self:min() - other:max()
     local newSize = self:size() + other:size()
     local newLeft = topLeft + (newSize / 2)
-    return Rectangle.createCentered(newLeft.x, newLeft.y, newSize.x, newSize.y)
+    return Rectangle:createCentered(newLeft.x, newLeft.y, newSize.x, newSize.y)
 end
 
 function Rectangle:closestPointOnBounds(point)

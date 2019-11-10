@@ -4,17 +4,22 @@ local playerControllerSystem = tiny.processingSystem(class "PlayerControllerSyst
 playerControllerSystem.filter = tiny.requireAll("platforming", "isPlayer", "movement")
 
 function playerControllerSystem:process(e, dt)
-    
-    local l, r = love.keyboard.isDown("a"), love.keyboard.isDown("d")
-    local u = love.keyboard.isDown("space")
+
+    local l = love.keyboard.isDown("a") or love.keyboard.isDown("left")
+    local r = love.keyboard.isDown("d") or love.keyboard.isDown("right")
+    local jump = love.keyboard.isDown("space")
 
     if l then
-        e.collider.x = e.collider.x - e.movement.speed
+        -- e.collider.x = e.collider.x - e.movement.speed
+        e.platforming.direction = -1
     elseif r then
-        e.collider.x = e.collider.x + e.movement.speed
+        e.platforming.direction = 1
+        -- e.collider.x = e.collider.x + e.movement.speed
+    else
+        e.platforming.direction = 0
     end
 
-    e.platforming.isJumping = u
+    e.platforming.isJumping = jump
 
     if love.keyboard.isDown("r") then
         state.switch("state/ingame")

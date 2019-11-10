@@ -17,7 +17,7 @@ function Player:init(args)
         vx = 0, vy = 0,
         canJump = false,
     }
-    self.gravity = 500
+    self.gravity = 10
 
     self.isPlayer = true
     self.isMovable = true

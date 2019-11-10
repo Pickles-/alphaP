@@ -21,16 +21,23 @@ function collisionSystem:process(e, dt)
                     e.collider.y = e.collider.y - sep.y
                     
                     -- Bounce
-                    if (sep.y > 0) then
+                    --if (sep.y > 0) then
+                    --    e.platforming.canJump = true
+                    --    if (not e.platforming.isJumping) then
+                    --        e.platforming.vy = -e.platforming.vy / 2.5
+                    --    end
+                    --end
+
+                    if sep.y > 0 then
                         e.platforming.canJump = true
-                        if (not e.platforming.isJumping) then
-                            e.platforming.vy = -e.platforming.vy / 2.5
+                        if not e.platforming.isJumping then
+                            e.platforming.vy = 0
                         end
                     end
 
                     -- Bonk
                     if(sep.y < 0) then
-                        e.platforming.vy = -e.platforming.vy / 5
+                        e.platforming.vy = -e.platforming.vy / 1.5
                     end
                 end
             end

@@ -27,6 +27,11 @@ function collisionSystem:process(e, dt)
                             e.platforming.vy = -e.platforming.vy / 2.5
                         end
                     end
+
+                    -- Bonk
+                    if(sep.y < 0) then
+                        e.platforming.vy = -e.platforming.vy / 5
+                    end
                 end
             end
         end

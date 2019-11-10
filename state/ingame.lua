@@ -1,7 +1,9 @@
 local ingame = {}
 
+local debugEnabled = true
+
 function ingame.load()
-    debug:init()
+    debug:init(debugEnabled)
 
     local cam = camera:new()
     _G.world = tiny.world(
@@ -28,7 +30,7 @@ function love.draw()
     if world then
         world:update(dt, drawFilter)
     end
-
+    
     debug:draw(dt)
 end
 

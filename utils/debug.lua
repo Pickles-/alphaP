@@ -2,8 +2,9 @@
 
 local Debug = class("Debug")
 
-function Debug:init() 
+function Debug:init(enabled) 
     self.debug = {
+        enabled = enabled,
         rects = {},
     }
 end
@@ -14,11 +15,13 @@ end
 
 function Debug:reset()
     self.debug = {
+        enabled = self.debug.enabled,
         rects = {},
     }
 end
 
 function Debug:draw(dt)
+    if (not self.debug.enabled) then return end
     local r, b, g, a = love.graphics.getColor()
     love.graphics.setColor(255, 0, 0)
 
@@ -28,6 +31,12 @@ function Debug:draw(dt)
     end
 
     love.graphics.setColor(r, b, g, a)
+
+    love.graphics.print("FPS: "..tostring(love.timer.getFPS()), 10, 10)
+    love.graphics.print("Mem:  "..collectgarbage('count'), 10, 25)
+
+    --love.graphics.print("Draw Calls: "..love.graphics.getStats().drawcalls, 10, 45)
+    --love.graphics.print("Batched Calls: "..love.graphics.getStats().drawcallsbatched, 10, 60)
 end
 
 return Debug

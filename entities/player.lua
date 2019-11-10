@@ -13,7 +13,6 @@ function Player:init(args)
     }
 
     self.platforming = {
-        isGrounded = false,
         isJumping = false,
         vx = 0, vy = 0,
         canJump = false,

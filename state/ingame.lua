@@ -21,8 +21,12 @@ function ingame.load()
     ctor = require("entities.block")
     width, height = love.graphics.getDimensions()
     local block1 = ctor({x=0, y=height/2, w=width, h=1})
+    local block2 = ctor({x=width, y=height/2 - 25, w=width, h=1})
+    local block3 = ctor({x=width-550, y=height/2 - 80, w=500, h=25})
     world:add(player1)
     world:add(block1)
+    world:add(block2)
+    world:add(block3)
 end
 
 function love.draw()

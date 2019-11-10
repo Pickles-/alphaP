@@ -6,11 +6,12 @@ function simplePhysX:process(e, dt)
 
     local gravity = e.gravity or 0
     e.platforming.vy = e.platforming.vy + gravity * dt
+    e.collider.y = e.collider.y + e.platforming.vy * dt
 
     if (not e.platforming.isGrounded) then
-        e.collider.y = e.collider.y + e.platforming.vy * dt
+        
     else
-        e.platforming.vy = 0
+        --e.platforming.vy = 0
     end
 end
 

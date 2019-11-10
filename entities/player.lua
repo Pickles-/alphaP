@@ -16,8 +16,9 @@ function Player:init(args)
         isGrounded = false,
         isJumping = false,
         vx = 0, vy = 0,
+        canJump = false,
     }
-    self.gravity = 100
+    self.gravity = 500
 
     self.isPlayer = true
     self.isMovable = true

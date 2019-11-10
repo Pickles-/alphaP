@@ -22,7 +22,10 @@ function collisionSystem:process(e, dt)
                     
                     -- Bounce
                     if (sep.y > 0) then
-                        e.platforming.vy = -e.platforming.vy
+                        e.platforming.canJump = true
+                        if (not e.platforming.isJumping) then
+                            e.platforming.vy = -e.platforming.vy / 2.5
+                        end
                     end
                 end
             end

@@ -10,7 +10,8 @@ function ingame.load()
         require ("systems.playerControllerSystem")(),
         require ("systems.drawBackgroundSystem")(70, 100, 70, 0),
         require ("systems.collisionSystem")(),
-        require ("systems.simplePhysX")()
+        require ("systems.simplePhysX")(),
+        require ("systems.platformingSystem")()
     )
     local ctor = require("entities.player")
     local player1 = ctor({x=50, y=50})

@@ -1,7 +1,7 @@
 
 local collisionSystem = tiny.processingSystem(class "CollisionSystem")
 
-collisionSystem.filter = tiny.requireAll("collider", "isMovable")
+collisionSystem.filter = tiny.requireAll("collider", "platforming", "isMovable")
 
 function collisionSystem:init()
 end
@@ -19,6 +19,11 @@ function collisionSystem:process(e, dt)
                     local sep = md:closestPointOnBounds(vector.new())
                     e.collider.x = e.collider.x - sep.x
                     e.collider.y = e.collider.y - sep.y
+                    
+                    -- Bounce
+                    if (sep.y > 0) then
+                        e.platforming.vy = -e.platforming.vy
+                    end
                 end
             end
         end

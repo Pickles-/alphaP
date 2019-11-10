@@ -1,3 +1,5 @@
+-- Simple debug utility
+
 local Debug = class("Debug")
 
 function Debug:init() 
@@ -20,6 +22,7 @@ function Debug:draw(dt)
     local r, b, g, a = love.graphics.getColor()
     love.graphics.setColor(255, 0, 0)
 
+    -- Draw rectangles
     for _, value in pairs(self.debug.rects) do
         love.graphics.rectangle("line", value.x, value.y, value.w, value.h)
     end

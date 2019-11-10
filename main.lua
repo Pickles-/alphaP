@@ -18,19 +18,17 @@ function love.load()
         require ("systems.cameraSystem")(cam),
         require ("systems.playerControllerSystem")(),
         require ("systems.drawBackgroundSystem")(70, 100, 70, 0),
-        require ("systems.collisionSystem")()
+        require ("systems.collisionSystem")(),
+        require ("systems.simplePhysX")()
     )
     local ctor = require("entities.player")
     local player1 = ctor({x=50, y=50})
 
     ctor = require("entities.block")
-    local block1 = ctor({x=150, y=200})
-    local block2 = ctor({x=150, y=225})
-    local block3 = ctor({x=150, y=250})
+    local width, height = love.graphics.getDimensions()
+    local floor = ctor({x=0, y=height / 2, w=width, h=50})
     world:add(player1)
-    world:add(block1)
-    --world:add(block2)
-    --world:add(block3)
+    world:add(floor)
 end
 
 function love.update(dt)

@@ -15,6 +15,10 @@ function playerControllerSystem:process(e, dt)
     end
 
     e.platforming.isJumping = u
+
+    if love.keyboard.isDown("r") then
+        state.switch("state/ingame")
+    end
 end
 
 return playerControllerSystem

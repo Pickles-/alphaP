@@ -1,14 +1,14 @@
 local platformingSystem = tiny.processingSystem(class "platformingSystem")
 
-platformingSystem.filter = tiny.requireAll("platforming")
+platformingSystem.filter = tiny.requireAll("platforming", "movement")
 
 function platformingSystem:process(e, dt)
 
     if e.platforming.direction then
         if e.platforming.direction == -1 then
-            e.platforming.vx = -5
+            e.platforming.vx = -e.movement.speed
         elseif e.platforming.direction == 1 then
-            e.platforming.vx = 5
+            e.platforming.vx = e.movement.speed
         end
     end
 

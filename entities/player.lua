@@ -16,6 +16,7 @@ function Player:init(args)
         isJumping = false,
         vx = 0, vy = 0,
         canJump = false,
+        friction = 10
     }
     self.gravity = 10
 

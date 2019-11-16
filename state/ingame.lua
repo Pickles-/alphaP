@@ -1,10 +1,6 @@
 local ingame = {}
 
-local debugEnabled = true
-
-function ingame.load()
-    debug:init(debugEnabled)
-
+function ingame:enter()
     local cam = camera:new()
     _G.world = tiny.world(
         require ("systems.renderSystem")(cam),
@@ -29,21 +25,8 @@ function ingame.load()
     world:add(block3)
 end
 
-function love.draw()
-    local dt = love.timer.getDelta()
-    if world then
-        world:update(dt, drawFilter)
-    end
-    
-    debug:draw(dt)
-end
+function ingame:leave()
 
-function love.update(dt)
-    debug:reset()
-
-    if world then
-        world:update(dt, updateFilter)
-    end
 end
 
 return ingame

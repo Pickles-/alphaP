@@ -3,6 +3,7 @@ class = require "lib.class"
 vector = require "lib.vector"
 camera = require "lib.camera"
 gamestate = require "lib.gamestate"
+require "lib.savetable"
 require "utils.idGenerator"
 
 local ingame = require "state.ingame"

@@ -1,5 +1,19 @@
 local ingame = {}
 
+function ingame:loadBlocks()
+    local ctor = require("entities.block")
+    local blocks = table.load("state/ingameBlocks.lua")
+    for _, b in pairs(blocks) do
+        world:add(ctor({x=b.x, y=b.y, w=b.w, h=b.h}))
+    end
+end
+
+function ingame:loadPlayer()
+    local ctor = require("entities.player")
+    local player1 = ctor({x=50, y=50})
+    world:add(player1)
+end
+
 function ingame:enter()
     local cam = camera:new()
     _G.world = tiny.world(
@@ -11,18 +25,9 @@ function ingame:enter()
         require ("systems.simplePhysX")(),
         require ("systems.platformingSystem")()
     )
-    local ctor = require("entities.player")
-    local player1 = ctor({x=50, y=50})
 
-    ctor = require("entities.block")
-    width, height = love.graphics.getDimensions()
-    local block1 = ctor({x=0, y=height/2, w=width, h=1})
-    local block2 = ctor({x=width, y=height/2 - 25, w=width, h=1})
-    local block3 = ctor({x=width-550, y=height/2 - 80, w=500, h=25})
-    world:add(player1)
-    world:add(block1)
-    world:add(block2)
-    world:add(block3)
+    self:loadBlocks()
+    self:loadPlayer()
 end
 
 function ingame:leave()

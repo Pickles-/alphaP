@@ -35,6 +35,7 @@ function Debug:draw(dt)
     love.graphics.print("FPS: "..tostring(love.timer.getFPS()), 10, 10)
     love.graphics.print("Mem:  "..collectgarbage('count'), 10, 25)
     love.graphics.print(string.format("Average frame time: %.3f ms", 1000 * love.timer.getAverageDelta()), 10, 40)
+    love.graphics.print(string.format("Mouse x: %s Mouse y: %s", love.mouse.getPosition()), 10, 55)
 
     --love.graphics.print("Draw Calls: "..love.graphics.getStats().drawcalls, 10, 45)
     --love.graphics.print("Batched Calls: "..love.graphics.getStats().drawcallsbatched, 10, 60)

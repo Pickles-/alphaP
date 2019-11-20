@@ -5,8 +5,8 @@ playerControllerSystem.filter = tiny.requireAll("platforming", "isPlayer")
 
 function playerControllerSystem:process(e, dt)
 
-    local l = love.keyboard.isDown("a") or love.keyboard.isDown("left")
-    local r = love.keyboard.isDown("d") or love.keyboard.isDown("right")
+    local l = love.keyboard.isDown("a")
+    local r = love.keyboard.isDown("d")
     local jump = love.keyboard.isDown("space")
 
     if l then

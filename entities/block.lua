@@ -4,6 +4,8 @@ function Block:init(args)
     self.id = getNextId()
 
     self.collider = require ("base.rectangle")(args.x, args.y, args.w, args.h)
+    self.block = true
+    self.selected = args.selected
 end
 
 function Block:draw(dt)
